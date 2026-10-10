@@ -1,0 +1,46 @@
+:root {
+  --primary: #1a3a6b;
+  --primary-light: #2c5aa0;
+  --bg: #f4f6fa;
+  --text: #1f2430;
+  --muted: #6b7280;
+  --border: #d9dee8;
+  --danger: #c0392b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); }
+a { color: var(--primary-light); text-decoration: none; }
+.muted { color: var(--muted); font-size: .9rem; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: .7rem 1.5rem; background: #fff; border-bottom: 1px solid var(--border); gap: 1rem; }
+.topbar nav { display: flex; align-items: center; gap: 1rem; }
+.brand { font-weight: 700; font-size: 1.25rem; color: var(--text); }
+.brand span { color: var(--primary-light); }
+
+.btn { display: inline-block; background: var(--primary); color: #fff; border: 1px solid var(--primary); padding: .55rem 1.1rem; border-radius: 6px; font-size: .95rem; cursor: pointer; }
+.btn:hover { background: var(--primary-light); }
+.btn-lg { padding: .8rem 1.6rem; font-size: 1.05rem; }
+.btn-sm { padding: .35rem .8rem; font-size: .85rem; }
+.btn-outline { background: #fff; color: var(--primary); }
+.btn-outline:hover { background: #eef2fa; }
+.btn-danger { background: #fff; color: var(--danger); border-color: var(--danger); }
+.btn-danger:hover { background: #fdecea; }
+
+input, textarea { width: 100%; padding: .5rem .65rem; border: 1px solid var(--border); border-radius: 6px; font: inherit; background: #fff; }
+input:focus, textarea:focus { outline: 2px solid #b9cdf0; border-color: var(--primary-light); }
+label { display: block; font-size: .85rem; color: var(--muted); margin-bottom: .7rem; }
+label input, label textarea { margin-top: .25rem; color: var(--text); }
+
+.flash { padding: .6rem .9rem; border-radius: 6px; margin-bottom: 1rem; font-size: .9rem; }
+.flash.error { background: #fdecea; color: var(--danger); }
+.flash.success { background: #e8f6ee; color: #1e7a45; }
+
+.hero { text-align: center; padding: 6rem 1.5rem; max-width: 720px; margin: 0 auto; }
+.hero h1 { font-size: 2.6rem; margin-bottom: .5rem; }
+.hero p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+
+.auth-page { display: flex; min-height: 100vh; align-items: center; justify-content: center; }
+.auth-card { background: #fff; padding: 2rem; border-radius: 10px; width: 100%; max-width: 380px; border: 1px solid var(--border); }
+.auth-card h2 { margin: .8rem 0 1rem; }
+.auth-card .btn { width: 100%; }
+.alt { text-align: center; color: var(--muted); font-size: .9rem; margin-bottom: 0; }

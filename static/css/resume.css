@@ -1,0 +1,42 @@
+/* ---------- editor layout ---------- */
+.editor-page { height: 100vh; display: flex; flex-direction: column; }
+.editor-page .topbar .left, .editor-page .topbar .right { display: flex; align-items: center; gap: .8rem; }
+.title-input { width: 260px; font-weight: 600; }
+.split { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+.pane { overflow-y: auto; padding: 1.2rem 1.5rem; }
+.form-pane { background: #fff; border-right: 1px solid var(--border); }
+.form-pane h3 { margin: 1rem 0 .6rem; color: var(--primary); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.list-head { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+.list-head h3 { margin: 0; }
+.item { border: 1px solid var(--border); border-radius: 8px; padding: .8rem; margin: .6rem 0; background: #fafbfd; }
+.item .item-actions { text-align: right; }
+.preview-pane { background: #e5e9f0; }
+
+/* ---------- the paper (LaTeX-style resume) ---------- */
+.paper { background: #fff; width: 100%; max-width: 794px; min-height: 1000px; margin: 0 auto; padding: 40px 48px; box-shadow: 0 2px 12px rgba(0,0,0,.15); font-family: "Latin Modern Roman", "CMU Serif", "Computer Modern Serif", "Times New Roman", Times, serif; font-size: 13px; line-height: 1.4; color: #000; }
+.paper h1 { text-align: center; margin: 0; font-size: 26px; letter-spacing: 1px; font-weight: 700; }
+.paper .r-contact { text-align: center; font-size: 12.5px; margin: 4px 0 6px; }
+.paper .r-contact a { color: #000; text-decoration: none; }
+.paper h2 { font-size: 14.5px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #000; margin: 14px 0 6px; padding-bottom: 1px; }
+.paper .r-row { display: flex; justify-content: space-between; gap: 1rem; }
+.paper .r-gap { height: 4px; }
+.paper .r-skills { display: grid; grid-template-columns: 27% 1fr; row-gap: 2px; }
+.paper .r-just { text-align: justify; }
+.paper .r-indent { margin: 0 0 5px 8px; }
+.paper ul { margin: 2px 0 4px 16px; padding: 0; }
+.paper li { margin-bottom: 3px; }
+.paper p { margin: 0 0 4px; }
+
+.preview-page { background: #e5e9f0; }
+.preview-page .paper { margin: 1.5rem auto; }
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .preview-pane { display: none; }
+}
+@media print {
+  .no-print { display: none !important; }
+  body, .preview-page { background: #fff; }
+  .paper { box-shadow: none; margin: 0; max-width: none; }
+}

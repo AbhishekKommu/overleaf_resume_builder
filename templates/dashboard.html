@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Resume Builder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('dashboard') }}">Resume<span>Builder</span></a>
+    <nav>
+      <span class="muted">Hi, {{ session.username }}</span>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+  </header>
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}{% for cat, msg in messages %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}{% endwith %}
+    <div class="dash-head">
+      <h2>My Resumes</h2>
+      <form method="post" action="{{ url_for('new_resume') }}" class="new-form">
+        <input name="title" placeholder="Resume title" value="My Resume" required>
+        <button class="btn" type="submit">+ New Resume</button>
+        <button class="btn btn-outline" type="submit" name="sample" value="1">Use Sample</button>
+      </form>
+    </div>
+    {% if resumes %}
+    <div class="grid">
+      {% for r in resumes %}
+      <div class="card">
+        <h3>{{ r.title }}</h3>
+        <p class="muted">Updated {{ r.updated_at }}</p>
+        <div class="actions">
+          <a class="btn btn-sm" href="{{ url_for('editor', resume_id=r.id) }}">Edit</a>
+          <a class="btn btn-sm btn-outline" href="{{ url_for('preview', resume_id=r.id) }}">Preview</a>
+          <a class="btn btn-sm btn-outline" href="{{ url_for('download_pdf', resume_id=r.id) }}">PDF</a>
+          <form method="post" action="{{ url_for('delete_resume', resume_id=r.id) }}" data-confirm="Delete this resume?">
+            <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty">No resumes yet. Create your first one above.</p>
+    {% endif %}
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

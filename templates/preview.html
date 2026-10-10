@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview - {{ resume.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}">
+</head>
+<body class="preview-page">
+  <header class="topbar no-print">
+    <a href="{{ url_for('dashboard') }}">&larr; Dashboard</a>
+    <div>
+      <a class="btn btn-sm btn-outline" href="{{ url_for('editor', resume_id=resume.id) }}">Edit</a>
+      <a class="btn btn-sm" href="{{ url_for('download_pdf', resume_id=resume.id) }}">Download PDF</a>
+    </div>
+  </header>
+  <div id="resume-preview" class="paper"></div>
+  <script>window.RESUME_CONTENT = {{ resume.content | tojson }};</script>
+  <script src="{{ url_for('static', filename='js/resume_editor.js') }}"></script>
+</body>
+</html>

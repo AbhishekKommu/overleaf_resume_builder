@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Resume Builder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="auth-page">
+  <div class="auth-card">
+    <a class="brand" href="{{ url_for('index') }}">Resume<span>Builder</span></a>
+    <h2>Login</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}{% for cat, msg in messages %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}{% endwith %}
+    <form method="post">
+      <label>Username or email<input name="identifier" required autofocus></label>
+      <label>Password<input type="password" name="password" required></label>
+      <button class="btn" type="submit">Login</button>
+    </form>
+    <p class="alt">No account? <a href="{{ url_for('register') }}">Register</a></p>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor - {{ resume.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}">
+</head>
+<body class="editor-page">
+  <header class="topbar">
+    <div class="left">
+      <a href="{{ url_for('dashboard') }}">&larr; Dashboard</a>
+      <input id="resume-title" class="title-input" value="{{ resume.title }}" maxlength="100">
+    </div>
+    <div class="right">
+      <span id="save-status" class="muted">Saved</span>
+      <button id="btn-save" class="btn btn-sm">Save</button>
+      <button id="btn-pdf" class="btn btn-sm btn-outline">Download PDF</button>
+    </div>
+  </header>
+
+  <div class="split">
+    <section class="pane form-pane">
+      <h3>Header</h3>
+      <label>Full name<input data-field="name"></label>
+      <div class="row2">
+        <label>Phone<input data-field="phone"></label>
+        <label>Email<input data-field="email"></label>
+      </div>
+      <div class="row2">
+        <label>LinkedIn URL<input data-field="linkedin" placeholder="linkedin.com/in/you"></label>
+        <label>GitHub URL<input data-field="github" placeholder="github.com/you"></label>
+      </div>
+
+      <h3>Objective</h3>
+      <label><textarea data-field="objective" rows="4"></textarea></label>
+
+      <div class="list-head"><h3>Education</h3><button class="btn btn-sm btn-outline" data-add="education">+ Add</button></div>
+      <div id="list-education"></div>
+
+      <div class="list-head"><h3>Skills</h3><button class="btn btn-sm btn-outline" data-add="skills">+ Add</button></div>
+      <div id="list-skills"></div>
+
+      <h3>Project Experience</h3>
+      <label>One bullet per line<textarea data-field="experience" rows="5"></textarea></label>
+
+      <div class="list-head"><h3>Projects</h3><button class="btn btn-sm btn-outline" data-add="projects">+ Add</button></div>
+      <div id="list-projects"></div>
+
+      <h3>Declaration</h3>
+      <label><textarea data-field="declaration" rows="3"></textarea></label>
+    </section>
+
+    <section class="pane preview-pane">
+      <div id="resume-preview" class="paper"></div>
+    </section>
+  </div>
+
+  <script>
+    window.RESUME_ID = {{ resume.id }};
+    window.RESUME_CONTENT = {{ resume.content | tojson }};
+  </script>
+  <script src="{{ url_for('static', filename='js/resume_editor.js') }}"></script>
+</body>
+</html>

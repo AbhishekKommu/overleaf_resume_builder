@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('index') }}">Resume<span>Builder</span></a>
+    <nav>
+      <a href="{{ url_for('login') }}">Login</a>
+      <a class="btn" href="{{ url_for('register') }}">Get Started</a>
+    </nav>
+  </header>
+  <main class="hero">
+    <h1>Write your resume. See it live.</h1>
+    <p>An Overleaf-style editor: type on the left, watch a polished resume render on the right, then download a clean PDF.</p>
+    <a class="btn btn-lg" href="{{ url_for('register') }}">Create your free account</a>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
